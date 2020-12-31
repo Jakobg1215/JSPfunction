@@ -18,10 +18,10 @@ class JoinMessage {
         return;
     };
     onEnable() {
-        this.api.getLogger().info('ready');
+        this.api.getLogger().info('Functions are ready to go!');
     };
     onDisable() {
-        this.api.getLogger().info('disabled');
+        this.api.getLogger().info('Functions are now disabled!');
     };
     getFiles(folderPath) {
         const entries = readdirSync(folderPath).map((entries) => Path.join(folderPath, entries));
