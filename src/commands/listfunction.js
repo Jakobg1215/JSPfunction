@@ -1,3 +1,4 @@
+//Thank you Filiph Sandström for the idea!
 const Plugin = require("../base/BasePlugin");
 const fs = require("fs");
 module.exports = class sendPacket extends Plugin {
