@@ -1,4 +1,5 @@
 const { readdirSync, statSync } = require('fs');
+const fs = require('fs');
 const Path = require('path');
 
 class JoinMessage {
@@ -18,6 +19,7 @@ class JoinMessage {
         return;
     };
     onEnable() {
+        if (!fs.existsSync("./functions")) fs.mkdirSync("./functions");
         this.api.getLogger().info('Functions are ready to go!');
     };
     onDisable() {
