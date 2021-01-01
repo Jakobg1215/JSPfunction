@@ -7,7 +7,7 @@ module.exports = class sendPacket extends Plugin {
         this.getApi().getServer().getCommandManager().registerClassCommand(
             {
                 id: "functions:listfunction",
-                description: "Lists all functions in the function folder!",
+                description: "Lists all functions in the functions folder!",
                 execute: (sender, args) => {
                     const functionFiles = fs.readdirSync("./functions").filter(file => file.endsWith(".mcfunction"));
                     return sender.sendMessage(`${functionFiles}`);
