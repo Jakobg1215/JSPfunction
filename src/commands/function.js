@@ -6,7 +6,7 @@ module.exports = class sendPacket extends Plugin {
         this.getApi().getServer().getCommandManager().registerClassCommand(
             {
                 id: "functions:function",
-                description: "Runs commands in a function file",
+                description: "Runs commands in a functions file",
                 execute: (sender, args) => {
                     if (args[0]) {
                         if (fs.existsSync(`./functions/${args[0]}.mcfunction`)) {
