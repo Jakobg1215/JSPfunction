@@ -9,6 +9,7 @@ module.exports = class sendPacket extends Plugin {
             {
                 id: "functions:listfunction",
                 description: "Lists all functions in the function folder!",
+                permission: "functions.command.listfunction",
                 register: Dispatcher => {
                     Dispatcher.register(
                         literal("listfunction").executes(
