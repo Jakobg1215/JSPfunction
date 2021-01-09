@@ -8,6 +8,7 @@ module.exports = class sendPacket extends Plugin {
             {
                 id: "functions:function",
                 description: "Runs commands in a function file",
+                permission: "functions.command.function",
                 register: Dispatcher => {
                     Dispatcher.register(
                         literal("function").then(
