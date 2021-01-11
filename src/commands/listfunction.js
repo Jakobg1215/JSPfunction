@@ -15,7 +15,9 @@ module.exports = class sendPacket extends Plugin {
                         literal("listfunction").executes(
                             context => {
                                 const functionFiles = fs.readdirSync("./functions").filter(file => file.endsWith(".mcfunction"));
-                                return context.getSource().sendMessage(`${functionFiles}`);
+                                if (functionFiles.length > 0) {
+                                    return context.getSource().sendMessage(`${functionFiles}`);
+                                } else return context.getSource().sendMessage("§cThere are no function files!")
                             },
                         ),
                     );
