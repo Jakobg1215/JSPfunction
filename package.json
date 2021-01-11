@@ -1,10 +1,14 @@
 {
     "name": "mcfunctions",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Run function files on the server!",
     "main": "index.js",
     "author": "Jakobg1215",
     "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Jakobg1215/JSPfunctionplugin.git"
+    },
     "dependencies": {
         "@jsprismarine/brigadier": "^0.1.0",
         "fs": "^0.0.1-security",
