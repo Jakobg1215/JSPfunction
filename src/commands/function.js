@@ -1,6 +1,6 @@
 const Plugin = require("../base/BasePlugin");
 const fs = require("fs");
-const { literal, argument, string, } = require("@jsprismarine/brigadier");
+const { literal, argument, string } = require("@jsprismarine/brigadier");
 module.exports = class sendPacket extends Plugin {
     constructor(pluginData) {
         super(pluginData);
@@ -16,31 +16,29 @@ module.exports = class sendPacket extends Plugin {
                                 async context => {
                                     const infunction = context.getArgument("function");
                                     const sender = context.getSource();
-                                    if (infunction) {
-                                        if (fs.existsSync(`./functions/${infunction}.mcfunction`)) {
-                                            const lineReader = require('readline').createInterface({
-                                                input: fs.createReadStream(`./functions/${infunction}.mcfunction`),
-                                            });
-                                            lineReader.on('line', function (line) {
-                                                const commandManager = sender.getServer().getCommandManager();
-                                                const incommand = line.slice(0).split(/ +/).shift().toLocaleLowerCase();
-                                                // Thank you John.
-                                                for (const command of commandManager.getCommandsList()) {
-                                                    if (command[0] === incommand) {
-                                                        commandManager.dispatchCommand(sender, line);
-                                                        break;
-                                                    };
+                                    if (fs.existsSync(`./functions/${infunction}.mcfunction`)) {
+                                        const lineReader = require('readline').createInterface({
+                                            input: fs.createReadStream(`./functions/${infunction}.mcfunction`),
+                                        });
+                                        lineReader.on('line', function (line) {
+                                            const commandManager = sender.getServer().getCommandManager();
+                                            const incommand = line.slice(0).split(/ +/).shift().toLocaleLowerCase();
+                                            // Thank you John.
+                                            for (const command of commandManager.getCommandsList()) {
+                                                if (command[0] === incommand) {
+                                                    commandManager.dispatchCommand(sender, line);
+                                                    break;
                                                 };
-                                            });
-                                        } else return sender.sendMessage(`§c'${infunction}' function doesn't exist!`);
-                                    } else return sender.sendMessage("§cPlease put a function name in!");
-                                },
-                            ),
-                        ),
+                                            };
+                                        });
+                                    } else return sender.sendMessage(`§c'${infunction}' function doesn't exist!`);
+                                }
+                            )
+                        )
                     );
-                },
+                }
             },
-            this.getApi().getServer(),
+            this.getApi().getServer()
         );
     };
 };
