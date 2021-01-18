@@ -50,6 +50,7 @@ export default class PluginBase {
                 );
             }
         }, this.api.getServer());
+        //Thank you Filiph Sandström for the idea
         this.api.getServer().getCommandManager().registerClassCommand(new class ListFunctionsCommmand extends Command {
             constructor() {
                 super({
